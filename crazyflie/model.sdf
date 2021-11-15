@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.8">
     <model name="crazyflie">
-        <pose>0 0 0.02 0 0 0</pose>
+        <pose>0 0 0.0 0 0 0</pose>
         <link name="crazyflie/body">
         <inertial>
             <pose frame="">0 0 0 0 0 0</pose>
@@ -19,7 +19,7 @@
             <pose frame="">0 0 0 0 0 0</pose>
             <geometry>
                 <box>
-                    <size>0.10 0.10 0.3</size>
+                    <size>0.10 0.10 0.03</size>
                 </box>
             </geometry>
         </collision>

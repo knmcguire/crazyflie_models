@@ -83,7 +83,7 @@
     <include>
       <uri>model://crazyflie</uri>
       <name>crazyflie</name>
-      <pose>3.71033 2.24225 0.054999 0 0 -0</pose>
+      <pose>0 0 0.015 0 0 0</pose>
   
     </include>
   </world>
