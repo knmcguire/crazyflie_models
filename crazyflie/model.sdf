@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+    <model name="crazyflie">
+        <pose>0 0 0.02 0 0 0</pose>
+        <link name="crazyflie/body">
+        <inertial>
+            <pose frame="">0 0 0 0 0 0</pose>
+            <mass>0.025</mass>
+            <inertia>
+                <ixx>0.000016572</ixx>
+                <ixy>0.000000831</ixy>
+                <ixz>0.000000718</ixz>
+                <iyy>0.000016656</iyy>
+                <iyz>0.0000018</iyz>
+                <izz>0.000029262</izz>
+            </inertia>
+        </inertial>
+        <collision name="crazyflie/body_collision">
+            <pose frame="">0 0 0 0 0 0</pose>
+            <geometry>
+                <box>
+                    <size>0.10 0.10 0.3</size>
+                </box>
+            </geometry>
+        </collision>
+        <visual name="crazyflie/body_visual">
+            <pose frame="">0 0 0 0 -0 0</pose>
+            <geometry>
+                <mesh>
+                    <scale>1 1 1</scale>
+                    <uri>model://crazyflie/meshes/crazyflie.dae</uri>
+                </mesh>
+            </geometry>
+        </visual>
+        </link>
+    </model>
+</sdf>
