@@ -28,10 +28,122 @@
             <geometry>
                 <mesh>
                     <scale>1 1 1</scale>
-                    <uri>model://crazyflie/meshes/crazyflie.dae</uri>
+                    <uri>model://crazyflie/meshes/crazyflie_body.dae</uri>
                 </mesh>
             </geometry>
         </visual>
         </link>
+        <link name="crazyflie/m1_prop">
+            <pose frame="">0.048 0.048 0.021 0 0 0</pose>
+            <visual name="crazyflie/m1_visual">
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>1 1 1</scale>
+                        <uri>model://crazyflie/meshes/crazyflie_ccw_propeller.dae</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+        </link>
+        <link name="crazyflie/m2_prop">
+            <pose frame="">-0.048 0.048 0.021 0 0 0</pose>
+            <visual name="crazyflie/m2_visual">
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>1 1 1</scale>
+                        <uri>model://crazyflie/meshes/crazyflie_cw_propeller.dae</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+        </link>
+        <link name="crazyflie/m3_prop">
+            <pose frame="">-0.048 -0.048 0.021 0 0 0</pose>
+            <visual name="crazyflie/m3_visual">
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>1 1 1</scale>
+                        <uri>model://crazyflie/meshes/crazyflie_ccw_propeller.dae</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+        </link>
+        <link name="crazyflie/m4_prop">
+            <pose frame="">0.048 -0.048 0.021 0 0 0</pose>
+            <visual name="crazyflie/m4_visual">
+                <pose frame="">0 0 0 0 -0 0</pose>
+                <geometry>
+                    <mesh>
+                        <scale>1 1 1</scale>
+                        <uri>model://crazyflie/meshes/crazyflie_cw_propeller.dae</uri>
+                    </mesh>
+                </geometry>
+            </visual>
+        </link>
+        <joint name="crazyflie/m1_joint" type="revolute">
+            <child>crazyflie/m1_prop</child>
+            <parent>crazyflie/body</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
+                <joint name="crazyflie/m2_joint" type="revolute">
+            <child>crazyflie/m2_prop</child>
+            <parent>crazyflie/body</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
+                <joint name="crazyflie/m3_joint" type="revolute">
+            <child>crazyflie/m3_prop</child>
+            <parent>crazyflie/body</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
+        <joint name="crazyflie/m4_joint" type="revolute">
+            <child>crazyflie/m4_prop</child>
+            <parent>crazyflie/body</parent>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <limit>
+                    <lower>-1e+16</lower>
+                    <upper>1e+16</upper>
+                </limit>
+                <dynamics>
+                    <spring_reference>0</spring_reference>
+                    <spring_stiffness>0</spring_stiffness>
+                </dynamics>
+                <use_parent_model_frame>1</use_parent_model_frame>
+            </axis>
+        </joint>
     </model>
 </sdf>
