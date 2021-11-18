@@ -8,6 +8,8 @@ Supported Simulators:
 Supported OS
 * Ubuntu 20.04 (tested)
 
+Inspired by the quadcopter example of https://cyaninfinite.com/getting-started-with-ignition-gazebo/
+
 
 ## Getting started:
 
@@ -22,6 +24,10 @@ Supported OS
 
 4- Try out the crazyflie world with:
 `ign gazebo crazyflieworld.sdf`
+
+5- Turn the rotors and take off with:
+`ign topic -t /crazyflie/gazebo/command/motor_speed --msgtype ignition.msgs.Actuators -p 'velocity:[2500,2500,2500,2500]'`
+
 
 ## Current status
 It's pretty much only the visualization and collision model, so it's not yet really flying. 
