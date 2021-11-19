@@ -28,6 +28,9 @@ Inspired by the quadcopter example of https://cyaninfinite.com/getting-started-w
 5- Turn the rotors and take off with:
 `ign topic -t /crazyflie/gazebo/command/motor_speed --msgtype ignition.msgs.Actuators -p 'velocity:[2500,2500,2500,2500]'`
 
+6- Try out the control (still needs to be tuned)
+`ign topic -t "/crazyflie/gazebo/command/twist" -m ignition.msgs.Twist -p "linear: {x:0 y: 0 z: 0.1} angular {z: 0}"`
+
 
 ## Current status
 It's pretty much only the visualization and collision model, so it's not yet really flying. 
