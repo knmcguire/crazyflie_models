@@ -203,12 +203,12 @@
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
         <maxRotVelocity>2618</maxRotVelocity>
-        <motorConstant>1.2819184e-8</motorConstant>
+        <motorConstant>1.28192e-08</motorConstant>
         <momentConstant>0.005964552</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
         <motorNumber>0</motorNumber>
         <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
-        <rollingMomentCoefficient>0.000001</rollingMomentCoefficient>
+        <rollingMomentCoefficient>0.0000001</rollingMomentCoefficient>
         <motorSpeedPubTopic>motor_speed/0</motorSpeedPubTopic>
         <rotorVelocitySlowdownSim>150</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
@@ -223,12 +223,12 @@
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
         <maxRotVelocity>2618</maxRotVelocity>
-        <motorConstant>1.2819184e-8</motorConstant>
+        <motorConstant>1.28192e-08</motorConstant>
         <momentConstant>0.005964552</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
         <motorNumber>1</motorNumber>
         <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
-        <rollingMomentCoefficient>0.000001</rollingMomentCoefficient>
+        <rollingMomentCoefficient>0.0000001</rollingMomentCoefficient>
         <motorSpeedPubTopic>motor_speed/1</motorSpeedPubTopic>
         <rotorVelocitySlowdownSim>150</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
@@ -243,12 +243,12 @@
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
         <maxRotVelocity>2618</maxRotVelocity>
-        <motorConstant>1.2819184e-8</motorConstant>
+        <motorConstant>1.28192e-08</motorConstant>
         <momentConstant>0.005964552</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
         <motorNumber>2</motorNumber>
         <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
-        <rollingMomentCoefficient>0.000001</rollingMomentCoefficient>
+        <rollingMomentCoefficient>0.0000001</rollingMomentCoefficient>
         <motorSpeedPubTopic>motor_speed/2</motorSpeedPubTopic>
         <rotorVelocitySlowdownSim>150</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
@@ -263,7 +263,7 @@
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
         <maxRotVelocity>2618</maxRotVelocity>
-        <motorConstant>1.2819184e-8</motorConstant>
+        <motorConstant>1.28192e-08</motorConstant>
         <momentConstant>0.005964552</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
         <motorNumber>3</motorNumber>
@@ -280,33 +280,34 @@
         <commandSubTopic>gazebo/command/twist</commandSubTopic>
         <enableSubTopic>enable</enableSubTopic>
         <comLinkName>crazyflie/body</comLinkName>
-        <velocityGain>1000 1000 1000</velocityGain>
-        <attitudeGain>4 4 1</attitudeGain>
-        <angularRateGain>4 4 1</angularRateGain>
+        <velocityGain>1000 1000 5000</velocityGain>
+        <attitudeGain>0.5 0.5 0.5</attitudeGain>
+        <angularRateGain>1.5 1.5 1.5</angularRateGain>
+        <maximumAngularVelocity>3 3 3</maximumAngularVelocity>
 
         <rotorConfiguration>
           <rotor>
             <jointName>crazyflie/m1_joint</jointName>
-            <forceConstant>8.0e-9</forceConstant>
-            <momentConstant>0.016</momentConstant>
+            <forceConstant>1.28192e-08</forceConstant>
+            <momentConstant>0.005964552</momentConstant>
             <direction>1</direction>
           </rotor>
           <rotor>
             <jointName>crazyflie/m2_joint</jointName>
-            <forceConstant>8.0e-9</forceConstant>
-            <momentConstant>0.016</momentConstant>
+            <forceConstant>1.28192e-08</forceConstant>
+            <momentConstant>0.005964552</momentConstant>
             <direction>-1</direction>
           </rotor>
           <rotor>
             <jointName>crazyflie/m3_joint</jointName>
-            <forceConstant>8.0e-9</forceConstant>
-            <momentConstant>0.016</momentConstant>
+            <forceConstant>1.28192e-08</forceConstant>
+            <momentConstant>0.005964552</momentConstant>
             <direction>1</direction>
           </rotor>
           <rotor>
             <jointName>crazyflie/m4_joint</jointName>
-            <forceConstant>8.0e-9</forceConstant>
-            <momentConstant>0.016</momentConstant>
+            <forceConstant>1.28192e-08</forceConstant>
+            <momentConstant>0.005964552</momentConstant>
             <direction>-1</direction>
           </rotor>
         </rotorConfiguration>
