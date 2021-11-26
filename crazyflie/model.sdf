@@ -8,10 +8,10 @@
             <mass>0.025</mass>
             <inertia>
                 <ixx>0.000016572</ixx>
-                <ixy>0.000000831</ixy>
-                <ixz>0.000000718</ixz>
+                <ixy>0.00</ixy>
+                <ixz>0.00</ixz>
                 <iyy>0.000016656</iyy>
-                <iyz>0.0000018</iyz>
+                <iyz>0.00000</iyz>
                 <izz>0.000029262</izz>
             </inertia>
         </inertial>
@@ -63,9 +63,9 @@
                 <pose frame="">0 0 0 0 -0 0</pose>
                 <mass>0.0008</mass>
                 <inertia>
-                    <ixx>0.000000002*70</ixx>
-                    <iyy>0.000000167*70</iyy>
-                    <izz>0.000000168*70</izz>
+                    <ixx>0.000000002*50</ixx>
+                    <iyy>0.000000167*50</iyy>
+                    <izz>0.000000168*50</izz>
                     <ixy>0</ixy>
                     <ixz>0</ixz>
                     <iyz>0</iyz>
@@ -87,9 +87,9 @@
                 <pose frame="">0 0 0 0 -0 0</pose>
                 <mass>0.0008</mass>
                 <inertia>
-                    <ixx>0.000000002*70</ixx>
-                    <iyy>0.000000167*70</iyy>
-                    <izz>0.000000168*70</izz>
+                    <ixx>0.000000002*50</ixx>
+                    <iyy>0.000000167*50</iyy>
+                    <izz>0.000000168*50</izz>
                     <ixy>0</ixy>
                     <ixz>0</ixz>
                     <iyz>0</iyz>
@@ -111,9 +111,9 @@
                 <pose frame="">0 0 0 0 -0 0</pose>
                 <mass>0.0008</mass>
                 <inertia>
-                    <ixx>0.000000002*70</ixx>
-                    <iyy>0.000000167*70</iyy>
-                    <izz>0.000000168*70</izz>
+                    <ixx>0.000000002*50</ixx>
+                    <iyy>0.000000167*50</iyy>
+                    <izz>0.000000168*50</izz>
                     <ixy>0</ixy>
                     <ixz>0</ixz>
                     <iyz>0</iyz>
@@ -202,15 +202,15 @@
         <turningDirection>ccw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>3052</maxRotVelocity>
+        <maxRotVelocity>2618</maxRotVelocity>
         <motorConstant>1.2819184e-8</motorConstant>
         <momentConstant>0.005964552</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
         <motorNumber>0</motorNumber>
-        <rotorDragCoefficient>9.1785e-7</rotorDragCoefficient>
-        <rollingMomentCoefficient>0.0000001</rollingMomentCoefficient>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>0.000001</rollingMomentCoefficient>
         <motorSpeedPubTopic>motor_speed/0</motorSpeedPubTopic>
-        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>150</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
       </plugin>
       <plugin
@@ -222,15 +222,15 @@
         <turningDirection>cw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>3052</maxRotVelocity>
+        <maxRotVelocity>2618</maxRotVelocity>
         <motorConstant>1.2819184e-8</motorConstant>
         <momentConstant>0.005964552</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
         <motorNumber>1</motorNumber>
-        <rotorDragCoefficient>9.1785e-7</rotorDragCoefficient>
-        <rollingMomentCoefficient>0.0000001</rollingMomentCoefficient>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>0.000001</rollingMomentCoefficient>
         <motorSpeedPubTopic>motor_speed/1</motorSpeedPubTopic>
-        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>150</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
       </plugin>
       <plugin
@@ -242,15 +242,15 @@
         <turningDirection>ccw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>3052</maxRotVelocity>
+        <maxRotVelocity>2618</maxRotVelocity>
         <motorConstant>1.2819184e-8</motorConstant>
         <momentConstant>0.005964552</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
         <motorNumber>2</motorNumber>
-        <rotorDragCoefficient>9.1785e-7</rotorDragCoefficient>
-        <rollingMomentCoefficient>0.0000001</rollingMomentCoefficient>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>0.000001</rollingMomentCoefficient>
         <motorSpeedPubTopic>motor_speed/2</motorSpeedPubTopic>
-        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>150</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
       </plugin>
       <plugin
@@ -262,15 +262,15 @@
         <turningDirection>cw</turningDirection>
         <timeConstantUp>0.0125</timeConstantUp>
         <timeConstantDown>0.025</timeConstantDown>
-        <maxRotVelocity>3052</maxRotVelocity>
+        <maxRotVelocity>2618</maxRotVelocity>
         <motorConstant>1.2819184e-8</motorConstant>
         <momentConstant>0.005964552</momentConstant>
         <commandSubTopic>gazebo/command/motor_speed</commandSubTopic>
         <motorNumber>3</motorNumber>
-        <rotorDragCoefficient>9.1785e-7</rotorDragCoefficient>
-        <rollingMomentCoefficient>0.0000001</rollingMomentCoefficient>
+        <rotorDragCoefficient>8.06428e-05</rotorDragCoefficient>
+        <rollingMomentCoefficient>0.000001</rollingMomentCoefficient>
         <motorSpeedPubTopic>motor_speed/3</motorSpeedPubTopic>
-        <rotorVelocitySlowdownSim>10</rotorVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>150</rotorVelocitySlowdownSim>
         <motorType>velocity</motorType>
       </plugin> 
       <plugin
@@ -280,34 +280,34 @@
         <commandSubTopic>gazebo/command/twist</commandSubTopic>
         <enableSubTopic>enable</enableSubTopic>
         <comLinkName>crazyflie/body</comLinkName>
-        <velocityGain>20 20 20</velocityGain>
-        <attitudeGain>3 3 0.035</attitudeGain>
-        <angularRateGain>0.52 0.52 0.025</angularRateGain>
-        <maximumLinearAcceleration>2 2 2</maximumLinearAcceleration>
+        <velocityGain>1000 1000 1000</velocityGain>
+        <attitudeGain>4 4 1</attitudeGain>
+        <angularRateGain>4 4 1</angularRateGain>
+
         <rotorConfiguration>
           <rotor>
             <jointName>crazyflie/m1_joint</jointName>
-            <forceConstant>9.1785e-7</forceConstant>
-            <momentConstant>0.0000001</momentConstant>
-            <direction>-1</direction>
+            <forceConstant>8.0e-9</forceConstant>
+            <momentConstant>0.016</momentConstant>
+            <direction>1</direction>
           </rotor>
           <rotor>
             <jointName>crazyflie/m2_joint</jointName>
-            <forceConstant>9.1785e-7</forceConstant>
-            <momentConstant>0.0000001</momentConstant>
-            <direction>1</direction>
-          </rotor>
-          <rotor>
-            <jointName>crazyflie/m3_joint</jointName>
-            <forceConstant>9.1785e-7</forceConstant>
-            <momentConstant>0.0000001</momentConstant>
+            <forceConstant>8.0e-9</forceConstant>
+            <momentConstant>0.016</momentConstant>
             <direction>-1</direction>
           </rotor>
           <rotor>
-            <jointName>crazyflie/m4_joint</jointName>
-            <forceConstant>9.1785e-7</forceConstant>
-            <momentConstant>0.0000001</momentConstant>
+            <jointName>crazyflie/m3_joint</jointName>
+            <forceConstant>8.0e-9</forceConstant>
+            <momentConstant>0.016</momentConstant>
             <direction>1</direction>
+          </rotor>
+          <rotor>
+            <jointName>crazyflie/m4_joint</jointName>
+            <forceConstant>8.0e-9</forceConstant>
+            <momentConstant>0.016</momentConstant>
+            <direction>-1</direction>
           </rotor>
         </rotorConfiguration>
       </plugin>
