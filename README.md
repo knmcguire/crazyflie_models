@@ -31,6 +31,11 @@ Inspired by the quadcopter example of https://cyaninfinite.com/getting-started-w
 6- Try out the control (still needs to be tuned)
 `ign topic -t "/crazyflie/gazebo/command/twist" -m ignition.msgs.Twist -p "linear: {x:0 y: 0 z: 0.1} angular {z: 0}"`
 
+## Actor animiation (gazebo 11)
+
+Another way to control the crazyflie if one is only interested in position is through the actor frame work. This does NOT work on gazebo ignition as it's actor animation only work with skeleton intergrated for the time being, which does not make sense for the crazyflie. So install gazebo (version 11), make sure that "GAZEBO_MODEL_PATH" is correctly configured to also include crazyflie models, and try:
+
+`gazebo crazyflieworld_actor.world`
 
 ## Current status
 It's pretty much only the visualization and collision model, so it's not yet really flying. 
