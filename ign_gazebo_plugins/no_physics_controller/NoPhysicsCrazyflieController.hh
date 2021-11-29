@@ -18,7 +18,17 @@
 #define SYSTEM_PLUGIN_NOPYSICSCFCONTROLLER_HH_
 
 #include <chrono>
+#include <Eigen/Geometry>
+#include <memory>
+#include <string>
+
+#include <ignition/transport/Node.hh>
+
 #include <ignition/gazebo/System.hh>
+#include "ignition/gazebo/Link.hh"
+#include "ignition/gazebo/Model.hh"
+
+
 
 namespace no_physics_crazyflie_controller
 {
@@ -51,8 +61,12 @@ namespace no_physics_crazyflie_controller
     private: double previous_time;
 
     private: double pos_z_cmd;
+    private: ignition::transport::Node node;
 
     private: ignition::math::Vector3d previous_position;
+    private: void OnTwist(const ignition::msgs::Twist &_msg);
+    private: std::optional<ignition::msgs::Twist> cmdVelMsg;
+    private: std::mutex cmdVelMsgMutex;
 
   };
 }

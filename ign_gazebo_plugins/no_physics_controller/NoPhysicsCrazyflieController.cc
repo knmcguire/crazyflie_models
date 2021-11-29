@@ -35,6 +35,9 @@
 #include "ignition/gazebo/components/Pose.hh"
 #include "ignition/gazebo/Server.hh"
 #include "ignition/gazebo/Util.hh"
+#include <ignition/msgs/twist.pb.h>
+
+#include <ignition/transport/Node.hh>
 
 IGNITION_ADD_PLUGIN(
     no_physics_crazyflie_controller::NoPhysicsCrazyflieController,
@@ -63,37 +66,60 @@ void NoPhysicsCrazyflieController::Configure(const ignition::gazebo::Entity &_en
   ignmsg << "Controller for entity [" << _entity << "]" << std::endl;
   this->previous_position = {0, 0, 0};
 
+    std::string topic{"/cmdvel"};
+  this->node.Subscribe(topic, &NoPhysicsCrazyflieController::OnTwist, this);
+
+
+}
+
+//////////////////////////////////////////////////
+void NoPhysicsCrazyflieController::OnTwist(
+    const ignition::msgs::Twist &_msg)
+{
+  std::lock_guard<std::mutex> lock(this->cmdVelMsgMutex);
+  this->cmdVelMsg = _msg;
+  //ignmsg <<this->cmdVelMsg<<std::endl;
+
 }
 
 //////////////////////////////////////////////////
 void NoPhysicsCrazyflieController::PreUpdate(const ignition::gazebo::UpdateInfo &_info,
     ignition::gazebo::EntityComponentManager &_ecm)
 {
+  ignition::math::Vector3d linearVelCmd({0,0,0});
+
+    std::lock_guard<std::mutex> lock(this->cmdVelMsgMutex);
+    if (this->cmdVelMsg.has_value())
+    {
+      linearVelCmd = ignition::msgs::Convert(this->cmdVelMsg->linear());
+
+    }
 
 
-    auto PoseComp =
-        _ecm.Component<ignition::gazebo::components::Pose>(this->entity);
 
-    ignition::gazebo::Model model(this->entity);
+  auto PoseComp =
+      _ecm.Component<ignition::gazebo::components::Pose>(this->entity);
 
-
-    auto sec = double(std::chrono::duration_cast<std::chrono::nanoseconds>(
-      _info.simTime).count())*10e-9;
-    auto dtime = sec - this->previous_time;
+  ignition::gazebo::Model model(this->entity);
 
 
-    ignition::math::Pose3 pose = PoseComp->Data();
-    ignition::math::Vector3d v = ignition::math::Vector3(pose.Pos());
+  auto sec = double(std::chrono::duration_cast<std::chrono::nanoseconds>(
+    _info.simTime).count())*10e-9;
+  auto dtime = sec - this->previous_time;
 
-    double x,y,z;
 
-    x = v.X(); // x coordinate
-    y = v.Y(); // y coordinate
-    z = v.Z(); // z coordinate
-  double pos_z_cmd = z + 0.1*dtime;
+  ignition::math::Pose3 pose = PoseComp->Data();
+  ignition::math::Vector3d v = ignition::math::Vector3(pose.Pos());
+
+  double x,y,z;
+
+  x = v.X(); // x coordinate
+  y = v.Y(); // y coordinate
+  z = v.Z(); // z coordinate
+
+  double pos_z_cmd = z + linearVelCmd[2]*dtime;
 
   //ignmsg << z<<" " <<pos_z_cmd<<std::endl;
-
 
   //auto worldPoseCmdComp = _ecm.Component<ignition::gazebo::components::WorldPoseCmd>(this->entity);
 
