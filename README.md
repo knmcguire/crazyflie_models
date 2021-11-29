@@ -31,7 +31,32 @@ Inspired by the quadcopter example of https://cyaninfinite.com/getting-started-w
 6- Try out the control (still needs to be tuned)
 `ign topic -t "/crazyflie/gazebo/command/twist" -m ignition.msgs.Twist -p "linear: {x:0 y: 0 z: 0.1} angular {z: 0}"`
 
-## Actor animiation (gazebo 11)
+## No physics controller (ignition gazebo fortress)
+**still under development**
+
+Simple plugin to make crazyflie take off without physics.
+
+To build the plugin:
+1- go to:
+`cd ign_gazebo_plugins/no_physics_controller`
+
+2- build the plugin
+    mkdir build
+    cd build
+    cmake ..
+    make
+
+3- Source the plugin path inside the build folder
+```
+export IGN_GAZEBO_SYSTEM_PLUGIN_PATH=`pwd`
+```
+
+4- With the gazebo model path as configured in the previous section, do this:
+`ign gazebo -v 4 crazyflieworld_nophysics.sdf`
+
+
+
+## Actor animation (gazebo 11)
 
 Another way to control the crazyflie if one is only interested in position is through the actor frame work. This does NOT work on gazebo ignition as it's actor animation only work with skeleton intergrated for the time being, which does not make sense for the crazyflie. So install gazebo (version 11), make sure that "GAZEBO_MODEL_PATH" is correctly configured to also include crazyflie models, and try:
 
