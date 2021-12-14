@@ -1,6 +1,5 @@
 # crazyflie_models
 
-
 This is a repository to host Crazyflie based models.
 
 Supported Simulators:
