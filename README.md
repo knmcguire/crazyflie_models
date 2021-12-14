@@ -1,5 +1,6 @@
 # crazyflie_models
 
+
 This is a repository to host Crazyflie based models.
 
 Supported Simulators:
@@ -10,7 +11,9 @@ Supported OS
 
 Inspired by the quadcopter example of https://cyaninfinite.com/getting-started-with-ignition-gazebo/
 
+## Current status
 
+Still in development! 
 ## Getting started:
 
 1- First install ignition gazebo: https://ignitionrobotics.org/docs/fortress/install
@@ -32,7 +35,6 @@ Inspired by the quadcopter example of https://cyaninfinite.com/getting-started-w
 `ign topic -t "/crazyflie/gazebo/command/twist" -m ignition.msgs.Twist -p "linear: {x:0 y: 0 z: 0.1} angular {z: 0}"`
 
 ## No physics controller (ignition gazebo fortress)
-**still under development, only z-axis works now**
 
 Simple plugin to make crazyflie take off without physics.
 
@@ -54,10 +56,10 @@ export IGN_GAZEBO_SYSTEM_PLUGIN_PATH=`pwd`
 4- With the gazebo model path as configured in the previous section, do this:
 `ign gazebo -v 4 crazyflieworld_nophysics.sdf`
 
-5- Control the z axis of the crazyflies with:
+5- Control the z axis velocity of the crazyflies with:
 `ign topic -t "/cmdvel" -m ignition.msgs.Twist -p "linear: {x:0 y: 0 z: 0.1} angular {z: 0}"`
 
-
+6- you can now control the linear body fixed velocity and yaw rate
 
 ## Actor animation (gazebo 11)
 
@@ -65,5 +67,3 @@ Another way to control the crazyflie if one is only interested in position is th
 
 `gazebo crazyflieworld_actor.world`
 
-## Current status
-It's pretty much only the visualization and collision model, so it's not yet really flying. 

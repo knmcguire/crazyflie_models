@@ -38,6 +38,8 @@
 #include <ignition/msgs/twist.pb.h>
 
 #include <ignition/transport/Node.hh>
+#include <math.h>       /* cos */
+
 
 IGNITION_ADD_PLUGIN(
     no_physics_crazyflie_controller::NoPhysicsCrazyflieController,
@@ -87,11 +89,13 @@ void NoPhysicsCrazyflieController::PreUpdate(const ignition::gazebo::UpdateInfo 
     ignition::gazebo::EntityComponentManager &_ecm)
 {
   ignition::math::Vector3d linearVelCmd({0,0,0});
+  ignition::math::Vector3d angularVelCmd({0,0,0});
 
     std::lock_guard<std::mutex> lock(this->cmdVelMsgMutex);
     if (this->cmdVelMsg.has_value())
     {
       linearVelCmd = ignition::msgs::Convert(this->cmdVelMsg->linear());
+      angularVelCmd = ignition::msgs::Convert(this->cmdVelMsg->angular());
 
     }
 
@@ -110,20 +114,36 @@ void NoPhysicsCrazyflieController::PreUpdate(const ignition::gazebo::UpdateInfo 
 
   ignition::math::Pose3 pose = PoseComp->Data();
   ignition::math::Vector3d v = ignition::math::Vector3(pose.Pos());
-
+    
   double x,y,z;
+  double roll, pitch, yaw;
 
   x = v.X(); // x coordinate
   y = v.Y(); // y coordinate
   z = v.Z(); // z coordinate
+  yaw = pose.Yaw();
 
+
+
+  double cosyaw = cos(yaw);
+  double sinyaw = sin(yaw);
+
+  double state_body_vx = x* cosyaw + y * sinyaw;
+  double state_body_vy = -x * sinyaw + y * cosyaw;
+  double pos_x_cmd = state_body_vx + linearVelCmd[0]*dtime;
+  double pos_y_cmd = state_body_vy + linearVelCmd[1]*dtime;
   double pos_z_cmd = z + linearVelCmd[2]*dtime;
 
-  //ignmsg << z<<" " <<pos_z_cmd<<std::endl;
+  double pos_x_global_cmd = pos_x_cmd*cosyaw - pos_y_cmd*sinyaw;
+  double pos_y_global_cmd = pos_x_cmd*sinyaw + pos_y_cmd*cosyaw;
 
-  //auto worldPoseCmdComp = _ecm.Component<ignition::gazebo::components::WorldPoseCmd>(this->entity);
+  double yaw_cmd = yaw + angularVelCmd[2]*dtime;
 
-  model.SetWorldPoseCmd(_ecm, ignition::math::Pose3d(x, y, pos_z_cmd, 0, 0, 0));
+
+  ignition::math::Pose3d cmdPose;
+  cmdPose.Set(pos_x_global_cmd, pos_y_global_cmd, pos_z_cmd, 0, 0, yaw_cmd);
+
+  model.SetWorldPoseCmd(_ecm, cmdPose);
 
   this->previous_position = v;
   this->previous_time = sec;
