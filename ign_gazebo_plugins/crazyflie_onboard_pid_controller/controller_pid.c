@@ -1,10 +1,10 @@
 
 /* #include "stabilizer.h"
 #include "stabilizer_types.h"
-
+*/
 #include "attitude_controller.h"
-#include "sensfusion6.h"
-#include "position_controller.h" */
+//#include "sensfusion6.h"
+#include "position_controller.h" 
 #include "controller_pid.h"
 
 #include "helper_functions.h"
@@ -90,7 +90,7 @@ void controllerPid(control_t *control, setpoint_t *setpoint,
   }
 
   if (RATE_DO_EXECUTE(POSITION_RATE, tick)) {
-    //positionController(&actuatorThrust, &attitudeDesired, setpoint, state);
+    positionController(&actuatorThrust, &attitudeDesired, setpoint, state);
   }
 
   if (RATE_DO_EXECUTE(ATTITUDE_RATE, tick)) {
@@ -103,30 +103,29 @@ void controllerPid(control_t *control, setpoint_t *setpoint,
       attitudeDesired.pitch = setpoint->attitude.pitch;
     }
 
-    /*attitudeControllerCorrectAttitudePID(state->attitude.roll, state->attitude.pitch, state->attitude.yaw,
+    attitudeControllerCorrectAttitudePID(state->attitude.roll, state->attitude.pitch, state->attitude.yaw,
                                 attitudeDesired.roll, attitudeDesired.pitch, attitudeDesired.yaw,
-                                &rateDesired.roll, &rateDesired.pitch, &rateDesired.yaw);*/
+                                &rateDesired.roll, &rateDesired.pitch, &rateDesired.yaw);
 
     // For roll and pitch, if velocity mode, overwrite rateDesired with the setpoint
     // value. Also reset the PID to avoid error buildup, which can lead to unstable
     // behavior if level mode is engaged later
     if (setpoint->mode.roll == modeVelocity) {
       rateDesired.roll = setpoint->attitudeRate.roll;
-      //attitudeControllerResetRollAttitudePID();
+      attitudeControllerResetRollAttitudePID();
     }
     if (setpoint->mode.pitch == modeVelocity) {
       rateDesired.pitch = setpoint->attitudeRate.pitch;
-      //attitudeControllerResetPitchAttitudePID();
+      attitudeControllerResetPitchAttitudePID();
     }
 
     // TODO: Investigate possibility to subtract gyro drift.
 
-    //attitudeControllerCorrectRatePID(sensors->gyro.x, -sensors->gyro.y, sensors->gyro.z,
-                            //rateDesired.roll, rateDesired.pitch, rateDesired.yaw);
-    //printf('attitudeControllerGetActuatorOutput\n')
-    /*attitudeControllerGetActuatorOutput(&control->roll,
+    attitudeControllerCorrectRatePID(sensors->gyro.x, -sensors->gyro.y, sensors->gyro.z,
+                            rateDesired.roll, rateDesired.pitch, rateDesired.yaw);
+    attitudeControllerGetActuatorOutput(&control->roll,
                                         &control->pitch,
-                                        &control->yaw);*/
+                                        &control->yaw);
 
     control->yaw = -control->yaw;
 
@@ -161,7 +160,7 @@ void controllerPid(control_t *control, setpoint_t *setpoint,
     cmd_pitch = control->pitch;
     cmd_yaw = control->yaw;
 
-    //attitudeControllerResetAllPID();
+    attitudeControllerResetAllPID();
     //positionControllerResetAllPID();
 
     // Reset the calculated YAW angle for rate control

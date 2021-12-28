@@ -6,6 +6,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <math.h>
 
 /* Orientation as a quaternion */
  typedef struct quaternion_s {
@@ -144,6 +145,19 @@ typedef struct sensorData_s {
 #define M_PI_F   (3.14159265358979323846f)
 
 static inline float radians(float degrees) { return (M_PI_F / 180.0f) * degrees; }
+
+static inline float constrain(float value, const float minVal, const float maxVal)
+{
+  return fminf(maxVal, fmaxf(minVal,value));
+}
+
+# if (__GNUC_PREREQ (4,4) && !defined __SUPPORT_SNAN__) \
+     || __glibc_clang_prereq (2,8)
+#  define isnan(x) __builtin_isnan (x)
+# else
+#  define isnan(x) __MATH_TG ((x), __isnan, (x))
+# endif
+
 
 
 #endif

@@ -28,7 +28,7 @@
 #define PID_H_
 
 #include <stdbool.h>
-#include "filter.h"
+//#include "filter.h"
 
 #define PID_ROLL_RATE_KP  250.0
 #define PID_ROLL_RATE_KI  500.0
@@ -81,7 +81,7 @@ typedef struct
   float iLimit;       //< integral limit, absolute value. '0' means no limit.
   float outputLimit;  //< total PID output limit, absolute value. '0' means no limit.
   float dt;           //< delta-time dt
-  lpf2pData dFilter;  //< filter for D term
+  //lpf2pData dFilter;  //< filter for D term
   bool enableDFilter; //< filter for D term enable flag
 } PidObject;
 
