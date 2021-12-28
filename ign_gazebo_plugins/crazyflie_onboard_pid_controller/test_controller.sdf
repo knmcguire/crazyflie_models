@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <plugin filename="CrazyflieOnboardPIDController"
+            name="crazyflie_onboard_pid_controller::CrazyflieOnboardPIDController">
+    </plugin>
+  </world>
+</sdf>

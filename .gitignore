@@ -1,1 +1,2 @@
 ign_gazebo_plugins/no_physics_controller/build/*
+ign_gazebo_plugins/crazyflie_onboard_pid_controller/build/*
