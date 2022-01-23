@@ -27,12 +27,23 @@ Still in development!
 4- Try out the crazyflie world with:
 `ign gazebo crazyflieworld.sdf`
 
-5- Turn the rotors and take off with:
-`ign topic -t /crazyflie/gazebo/command/motor_speed --msgtype ignition.msgs.Actuators -p 'velocity:[2500,2500,2500,2500]'`
-
-6- Try out the control (still needs to be tuned)
+5- Try out the control (still needs to be tuned)
 `ign topic -t "/crazyflie/gazebo/command/twist" -m ignition.msgs.Twist -p "linear: {x:0 y: 0 z: 0.1} angular {z: 0}"`
 
+### Only controlling motors without a controller
+
+First go to crazyflie/model.sdf, comment out the multicopter system plugin
+```
+      <!--plugin
+        filename="ignition-gazebo-multicopter-control-system"
+        name="ignition::gazebo::systems::MulticopterVelocityControl">
+        ...
+      </plugin-->
+```
+Then try an take off with sending a command to the motors:
+`ign topic -t /crazyflie/gazebo/command/motor_speed --msgtype ignition.msgs.Actuators -p 'velocity:[2500,2500,2500,2500]'`
+
+      
 ## No physics controller (ignition gazebo fortress)
 
 Simple plugin to make crazyflie take off without physics.
