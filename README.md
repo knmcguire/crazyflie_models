@@ -1,4 +1,8 @@
-# crazyflie_models
+
+
+# crazyflie_models Experimental repo
+
+**There is now a repository on the bitcraze github account specifically for simulations: https://github.com/bitcraze/crazyflie_simulation**
 
 This is a repository to host Crazyflie based models.
 
